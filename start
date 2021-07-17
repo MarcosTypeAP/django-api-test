@@ -1,0 +1,4 @@
+#!/bin/bash
+
+python /app/manage.py collectstatic --noinput
+gunicorn --bind 0.0.0.0:$PORT notesAPITest.wsgi --chdir=/app
