@@ -17,5 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt \
 COPY ./start /app/
 RUN chmod +x ./start
 
+EXPOSE 8000
+
 CMD ["./start"]
 

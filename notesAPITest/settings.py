@@ -31,6 +31,9 @@ ALLOWED_HOSTS = [
     "192.168.30.50",
 ]
 
+# Authentication & Users
+AUTH_USER_MODEL = 'users.User'
+
 
 # Application definition
 
@@ -49,8 +52,22 @@ INSTALLED_APPS = [
     'notes',
 
     # Third party apps
-
+    'rest_framework',
+    'rest_framework.authtoken',
+    
 ]
+
+# Django REST Framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        # 'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -136,6 +153,11 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATICFILES_DIRS = [
     STATIC_ROOT / 'static',
+]
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
 # Default primary key field type
