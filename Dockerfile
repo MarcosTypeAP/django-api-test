@@ -1,6 +1,7 @@
 FROM python:3.9.6-alpine
 
-RUN apk add --no-cache --update python3 py3-pip bash
+RUN apk add --no-cache --update python3 py3-pip bash libffi-dev py-cffi \
+    gcc musl-dev python3-dev
 
 COPY ./requirements.txt /app/
 
@@ -19,5 +20,7 @@ RUN chmod +x ./start
 
 EXPOSE 8000
 
-CMD ["./start"]
+# CMD ["./start"]
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 

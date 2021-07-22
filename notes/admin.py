@@ -1,3 +1,10 @@
+"""Notes Admin."""
+
+# Django
 from django.contrib import admin
 
-# Register your models here.
+# Models
+from notes.models import Note
+
+
+admin.site.register(Note)
